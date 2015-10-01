@@ -20,6 +20,7 @@ context "External request" do
     expect(Date.parse(item["published"])).to_not eq nil
     expect(item["title"]).not_to eq nil
     expect(item["link"]).not_to eq nil
+    expect(item["description"]).not_to eq nil
   end
 
   it "returns the proper count" do
