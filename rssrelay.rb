@@ -60,12 +60,14 @@ class RSSRelay < Sinatra::Application
       items = nil
 
       # Retrieve and parse the feed from the URL provided
+      # Added a :description to allow this to work
       open(params[:url]) do |rss|
         feed = RSS::Parser.parse(rss, false)
         items = feed.items.map{|item| 
           {
           :title => item.title, 
           :link => item.link,
+          :description => item.description, 
           :published => 
             if feed.class.to_s == "RSS::RDF"
               item.dc_date
