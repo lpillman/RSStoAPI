@@ -61,6 +61,7 @@ class RSSRelay < Sinatra::Application
 
       # Retrieve and parse the feed from the URL provided
       # Added a :description to allow this to work
+      #and it did work!
       open(params[:url]) do |rss|
         feed = RSS::Parser.parse(rss, false)
         items = feed.items.map{|item| 
